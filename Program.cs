@@ -84,6 +84,7 @@ namespace TextAdventure
      
 private void Scene1b(string partnerchoice1) {
     bool clueDraakArm = false;
+    bool isOptionLocked = true;
     Console.Clear();
     Console.WriteLine("Je zit in de auto met Booth en " + partnerchoice1 + ". Je stapt de SUV uit, de koude lucht bijt in je huid. Het Smithsonian National Museum of Natural History ligt voor je, zijn grote glazen gevel verlicht door de straatlantaarns, terwijl je voetstappen echoën op de marmeren trappen. Booth loopt snel naar de ingang, maar jij, als altijd, kan het niet helpen je gedachten te laten afdwalen naar de puzzel voor je.\r\n\r\nHet museum is stil, de sfeer zwaar van oude geschiedenis en wetenschap. De deuren schuiven open en je stapt de ruimte binnen, je ogen al zoekend naar de details—de barst in de vloer, de geuren van stof en oud papier. De ruimte is leeg, de hal immens.\r\n\r\nBooth werpt je een korte blik, maar het duurt niet lang voor je al je gedachten op de zaak richt. \"Het lichaam moet hier ergens zijn,\" zegt hij, maar je hebt je aandacht al verlegd naar de vitrines langs de muren.\r\n\r\n\"De temperatuur hier is laag, te laag voor een normale tentoonstelling,\" zeg je, je stem bijna zoals altijd analytisch. \"En de luchtvochtigheid... te hoog voor behoud van de mummies, dit zou de vervalprocessen versnellen. Wat moeten ze verborgen houden?\"\r\n\r\nBooth kijkt even op, maar haalt zijn schouders op. \"Je hebt gelijk, maar ik ben meer geïnteresseerd in het lichaam.\"\r\n\r\nDat is wanneer je de figuur op de vloer ziet liggen. In het midden van de zaal ligt het lichaam van een onbekende man, het ligt op een vreemde, onnatuurlijke manier. De omgeving lijkt ook te wijzen op iets vreemds.\r\n\r\nBooth werpt zich onmiddellijk op het lichaam, maar jij loopt er snel achteraan, je blik al gefocust op de details. Terwijl je dichterbij komt, begin je de eerste aanwijzingen te verwerken. \"De kleding is modern, maar lijkt gescheurd. De positie van het lichaam suggereert dat het niet per ongeluk is neergelegd—het lijkt opzet,\" zeg je terwijl je naar het lichaam kijkt. Je ogen scannen de omgeving verder. \"Het bloed is vers, maar niet voldoende om het tijdstip van de dood te bepalen. We hebben het over een moord, geen ongeluk.\"\r\n\r\nBooth, die het lichaam nu inspecteert, kijkt op naar je. \"Ja, dat heb ik ook al opgemerkt. Maar we moeten weten wie dit is.\"\r\n\r\nMet een geconcentreerde blik begint Booth het lichaam verder te onderzoeken, terwijl jij in stilte verder kijkt, je gedachten al samenvallend tot een logische conclusie. \"Er is geen enkele reden waarom een archeoloog hier zou worden achtergelaten, tussen de mummies,\" mumel je, maar Booth kijkt je aan en zegt: \"We hebben een moord, Brennan. Laten we de identiteit achterhalen.\" ");
     Console.WriteLine("Je hebt " + partnerchoice1 + " gekozen om je te helpen bij het onderzoek.");
@@ -106,7 +107,14 @@ private void Scene1b(string partnerchoice1) {
 
         for (int i = 0; i < opties.Count; i++)
         {
-            Console.WriteLine($"{i + 1}. {opties[i]}");
+            if (isOptionLocked && opties[i] == "Onderzoek de omgeving en vind aanwijzingen over de moord.")
+            {
+                Console.WriteLine($"{i + 1}. {opties[i]} [Locked]");
+            }
+            else
+            {
+                Console.WriteLine($"{i + 1}. {opties[i]}");
+            }
         }
 
         Console.Write("Maak een keuze: ");
@@ -118,7 +126,15 @@ private void Scene1b(string partnerchoice1) {
             Console.WriteLine($"\nJe hebt gekozen voor: {gekozenOptie}");
 
             // Simuleer het vinden van een aanwijzing of niet
-            if (gekozenOptie == "Kijk naar het lichaam en vind kenmerken om het slachtoffer te identificeren.")
+            if (isOptionLocked && gekozenOptie == "Onderzoek de omgeving en vind aanwijzingen over de moord.")
+            {
+                Console.WriteLine("Deze optie is vergrendeld. Kies een andere optie.");
+                Console.ReadKey();
+                opties.Insert(keuze - 1, gekozenOptie); // Voeg de optie terug in de lijst
+                continue;
+            }
+
+            else if (gekozenOptie == "Kijk naar het lichaam en vind kenmerken om het slachtoffer te identificeren.")
             {
                 gevondenClues.Add("Aanwijzing: Het slachtoffer heeft een tatoeage van een draak op zijn arm.");
                 Console.WriteLine("Je hebt een belangrijke aanwijzing gevonden: Het slachtoffer heeft een tatoeage van een draak op zijn arm.");
@@ -145,28 +161,28 @@ private void Scene1b(string partnerchoice1) {
 
                 // Markeer de clue als gevonden
                 clueDraakArm = true;
-6
+
                 Console.WriteLine("\nBooth zucht. \"Dus we hebben een vergiftiging, een gevecht of val, een ontbrekend horloge, en nu ook een mysterieuze draak-tatoeage. Wat wil je nu doen, Bones?\"");
 
             }
-            else if (gekozenOptie == "Onderzoek de omgeving en vind aanwijzingen over de moord.")
+            else if (isOptionLocked == false && gekozenOptie == "Onderzoek de omgeving en vind aanwijzingen over de moord.")
             {
                 gevondenClues.Add("Aanwijzing: Er ligt een bloedig mes onder een vitrine.");
-                Console.WriteLine("Je hebt een belangrijke aanwijzing gevonden: Er ligt een bloedig mes onder een vitrine.");
-            }
-            else if (gekozenOptie == "Bestuur de andere mummies misschien omdat het leuk is. Maar ook om te kijken of er iets verdachts is. Vooral omdat je een beetje afgeleid bent...")
-            {
-                Console.WriteLine("Je hebt niets verdachts gevonden bij de andere mummies.");
-            }
-            else if (gekozenOptie == "Praat met Booth")
-            {
-                Console.WriteLine("Booth vertelt je dat hij een verdachte heeft gezien die het museum verliet.");
+                Console.WriteLine("Je hebt een belangrijke aanwijzing gevonden: Er ligt een bloed");
+                Console.WriteLine("\nJe loopt naar de vitrine en ziet een bloedig mes liggen. Het is scherp en er zitten vingerafdrukken op. Dit is een belangrijke aanwijzing voor de moord. Je pakt het mes voorzichtig op en bewaart het in een zakje voor verder onderzoek.");
                 // exits console after waiting for key press
                 Console.ReadKey();
                 //Scene2();
                 Console.ReadKey();
                 Environment.Exit(0); // Exit the program
                 
+            } else if (gekozenOptie == "Praat met Booth"){
+                Console.WriteLine("Je belt Booth op en vraagt of hij al iets heeft gevonden.");
+                Console.WriteLine("Booth zegt dat hij de verdachtes heeft gevonden en wacht op jouw om samen in FBI HQ ze te ondervragen.");
+                Console.WriteLine("Je zegt dat je samen met " + partnerchoice1 +  "er aan komt en hangt op.");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+                // Scene2();
             }
 
             Console.WriteLine("\nDruk op Enter om verder te gaan...");
@@ -181,7 +197,10 @@ private void Scene1b(string partnerchoice1) {
     // Als de speler ALLE onderzoeken heeft voltooid, wordt Booth automatisch gebeld.
     //laat dit niet zien als optie kiest met booth spreken want dat gaat automatisch door naar de volgende scene
     Console.WriteLine("\nJe hebt alle onderzoeken gedaan. Tijd om Booth te bellen.");
-    //Scene2();
+    Console.WriteLine("Je belt Booth op en vraagt of hij al iets heeft gevonden.");
+    Console.WriteLine("Booth zegt dat hij de verdachtes heeft gevonden en wacht op jouw om samen in FBI HQ ze te ondervragen.");
+    Console.WriteLine("Je zegt dat je samen met " + partnerchoice1 +  "er aan komt en hangt op.");
+    Console.WriteLine("Press any key to continue...");
     Console.ReadKey();
 }
     }

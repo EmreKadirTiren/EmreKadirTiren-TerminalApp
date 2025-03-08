@@ -12,3 +12,4 @@ C:\Users\emrek\source\repos\EmreKadirTiren-ConsoleApp\EmreKadirTiren-ConsoleApp\
 C:\Users\emrek\source\repos\EmreKadirTiren-ConsoleApp\EmreKadirTiren-ConsoleApp\obj\Debug\net8.0\EmreKadirTiren-ConsoleApp.pdb
 C:\Users\emrek\source\repos\EmreKadirTiren-ConsoleApp\EmreKadirTiren-ConsoleApp\obj\Debug\net8.0\EmreKadirTiren-ConsoleApp.genruntimeconfig.cache
 C:\Users\emrek\source\repos\EmreKadirTiren-ConsoleApp\EmreKadirTiren-ConsoleApp\obj\Debug\net8.0\ref\EmreKadirTiren-ConsoleApp.dll
+C:\Users\emrek\source\repos\EmreKadirTiren-ConsoleApp\EmreKadirTiren-ConsoleApp\obj\Debug\net8.0\EmreKadirTiren-ConsoleApp.sourcelink.json
