@@ -1,4 +1,4 @@
-﻿// Code: Text Adventure Game
+// Code: Text Adventure Game
 
 namespace TextAdventure
 {
