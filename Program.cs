@@ -1,4 +1,4 @@
-// Code: Text Adventure Game
+﻿// Code: Text Adventure Game
 
 namespace TextAdventure
 {
@@ -295,15 +295,279 @@ private void Scene1b() { // Plaats delict onderzoeken en aanwijzingen vinden
     }
 }
 
-    private void Scene2()
+    private static void Scene2()
     {
         Console.Clear();
-        Console.WriteLine(bloedigMes);
+        Console.WriteLine("Je stapt de FBI HQ binnen, de geur van koffie en papier vult de lucht. Booth wacht op je bij de ingang, zijn blik ernstig.");
+        Console.WriteLine("Hij knikt naar je en leidt je naar een van de verhoorkamers, waar de verdachten al zitten te wachten.");
+    Console.WriteLine("\"Booth: Oké, Bones, laten we een weddenschap doen. Als deze verdachte binnen de eerste vijf minuten ‘Ik zweer het, ik heb niets gedaan’ zegt, koop jij koffie. Als hij huilt, koop ik koffie.");  
+    Console.WriteLine("\"Brennan: Statistisch gezien vertonen verdachten in 73% van de gevallen verdedigend gedrag binnen de eerste minuut, dus je weddenschap is nogal bevooroordeeld.\"");  
+    Console.WriteLine("\"Booth: Precies. Dus… ik wil een grote met extra suiker.\"");
+    Console.WriteLine("Jullie arriveren bij de verhoorkamers en Booth zegt: Oke Bones  we hebben 9 verdachtes en getuigen die we moeten ondervragen. Wie wil je als eerste ondervragen?");
+
+     List<string> personen = new List<string> 
+    {
+        "Dr. Edward 'Eddie' Langford (Verdachte)",
+        "Derek 'The Knife' Thompson (Verdachte)",
+        "Professor James 'Prof' Smith (Verdachte)",
+        "Jessica 'Jess' Taylor (Getuige)",
+        "Stop met ondervragen en bel met het lab om dan uiteindelijk de moordenaar te beschuldigen."	
+        
+    };
+
+    
+    Console.WriteLine("Press any key to continue...");
+    Console.ReadKey();
+    Console.Clear();
+    while(personen.Count > 0)
+    {
+    Console.WriteLine("Kies een persoon om te ondervragen: ");
+    for (int i = 0; i < personen.Count; i++)
+    {
+        Console.WriteLine($"{i + 1}. {personen[i]}");
+    }
+    Console.Write("Maak een keuze: ");
+   
+    if(int.TryParse(Console.ReadLine(), out int keuze) && keuze > 0 && keuze <= personen.Count)
+    {
+        Console.Clear();
+        string gekozenPersoon = personen[keuze - 1];
+        Console.WriteLine($"\nJe hebt gekozen voor: {gekozenPersoon}");
+
+        if(gekozenPersoon == "Dr. Edward 'Eddie' Langford (Verdachte)")
+        {
+            Edward();
+            personen.Remove(gekozenPersoon);
+        }
+        else if(gekozenPersoon == "Derek 'The Knife' Thompson (Verdachte)")
+        {
+            Derek();
+            personen.Remove(gekozenPersoon);
+        }
+        else if(gekozenPersoon == "Professor James 'Prof' Smith (Verdachte)")
+        {
+            Prof();
+            personen.Remove(gekozenPersoon);
+        }
+        else if(gekozenPersoon == "Jessica 'Jess' Taylor (Getuige)")
+        {
+            Jessica();
+            personen.Remove(gekozenPersoon);
+            
+        }
+        else if(gekozenPersoon == "Stop met ondervragen en bel met het lab om dan uiteindelijk de moordenaar te beschuldigen." || personen.Count == 1)
+        {
+            Scene3();
+        }
+        else
+        {
+            Console.WriteLine("Ongeldige keuze, probeer opnieuw.");
+            Console.ReadKey();
+        }
+
+    }
+    }
+
+    }
+
+    private static void Edward() {
+        Console.WriteLine("Je ondervraagt Dr. Edward 'Eddie' Langford, een archeoloog die in het museum werkte.");
+        Console.WriteLine("Hij beweert dat hij die avond niet aanwezig was, maar bewakingsbeelden laten iets anders zien.");
+    
+        Console.WriteLine("\nEdward: \"Ik was er niet! Ik zweer het!\"");
+    
+        Console.WriteLine("\nBooth: \"De bewakingsbeelden zeggen iets anders, Edward. Wat deed je daar echt?\"");
+    
+        Console.WriteLine("\nEdward zucht en kijkt naar de grond.");
+        Console.WriteLine("Edward: \"Oké, oké... Ik was er wel. Ik was het museum zelf aan het bestuderen voor een boek dat ik aan het schrijven was.\"");
+    
+        Console.WriteLine("\nBrennan: \"En waarom loog je daarover?\"");
+    
+        Console.WriteLine("\nEdward: \"Omdat ik wist dat het er verdacht uit zou zien. Maar ik heb niets met de moord te maken!\"");
+    
+        Console.WriteLine("\nJe hebt genoeg gehoord. Edward lijkt niet de moordenaar te zijn.");
+        Console.WriteLine("Press any key to continue...");
         Console.ReadKey();
+        Console.Clear();
+    }
+private static void Derek() {
+    Console.WriteLine("Je ondervraagt Derek 'The Knife' Thompson, een bekende kunstsmokkelaar met een verleden in het verkopen van gestolen museumstukken.");
+    Console.WriteLine("Zijn bijnaam komt van zijn voorliefde voor messen... en er lag een bloedig mes bij het lichaam.");
+
+    Console.WriteLine("\nDerek: \"Ik heb niets te zeggen.\"");
+
+    Console.WriteLine("\nBooth: \"We weten dat het jouw mes was, Derek. Waarom lag het bij het lichaam?\"");
+
+    Console.WriteLine("\nDerek: \"Ja, het is mijn mes. Maar ik was het niet. Ik heb een alibi.\"");
+
+    Console.WriteLine("\nBrennan: \"En wie zou jouw mes kunnen hebben gestolen?\"");
+
+    Console.WriteLine("\nDerek: \"Alleen iemand uit het museum zou toegang hebben tot mijn mes.\"");
+
+    Console.WriteLine("\nJe hebt genoeg gehoord. Derek lijkt niet de moordenaar te zijn, maar zijn mes werd wel gebruikt.");
+    Console.WriteLine("Press any key to continue...");
+    Console.ReadKey();
+    Console.Clear();
+}
+        private static void Prof() {
+            Console.WriteLine("Je ondervraagt Professor James 'Prof' Smith, een expert in oude culturen.");
+            Console.WriteLine("Hij lijkt nerveus en vermijdt oogcontact.");
+        
+            Console.WriteLine("\nProf: \"Ik was in slaap gevallen in mijn kantoor. Ik werd pas wakker toen het alarm afging en het lichaam werd gevonden.\"");
+        
+            Console.WriteLine("\nBooth: \"Waarom zou iemand je kantoor binnengaan en je niet wakker maken?\"");
+        
+            Console.WriteLine("\nJe merkt dat de professor een lichte trilling in zijn handen heeft.");
+            Console.WriteLine("Brennan: \"Professor, we hebben bewijs gevonden dat het slachtoffer een waardevol artefact vasthield. Kunt u uitleggen waarom er zand- of kleiachtig materiaal onder zijn nagels zat?\"");
+        
+            Console.WriteLine("\nProf: \"Ik... ik weet het niet. Misschien was hij bezig met een opgraving.\"");
+            Console.WriteLine("Booth: \"Of misschien betrapte hij je op het stelen van dat artefact en probeerde je hem het zwijgen op te leggen.\"");
+        
+            Console.WriteLine("\nDe professor begint te zweten en kijkt nerveus om zich heen.");
+            Console.WriteLine("Brennan: \"We hebben ook een mes gevonden met een symbool dat overeenkomt met de tatoeage op de arm van het slachtoffer. Wat kunt u ons daarover vertellen?\"");
+        
+            Console.WriteLine("\nProf: \"Dat... dat mes is van Derek. Hij heeft een voorliefde voor messen.\"");
+            Console.WriteLine("Booth: \"Maar alleen iemand uit het museum zou toegang hebben tot dat mes. En jij had een motief om het slachtoffer te vermoorden.\"");
+        
+            Console.WriteLine("\nDe professor zucht diep en sluit zijn ogen.");
+            Console.WriteLine("Prof: \"Oké, oké... Ik had schulden. Ik wilde het artefact verkopen om mijn schulden af te lossen. Maar hij betrapte me en ik... ik pakte het mes en...\"");
+        
+            Console.WriteLine("\nJe hebt genoeg gehoord. De professor is de moordenaar.");
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
+            Console.Clear();
+        }
+                private static void Jessica() {
+            Console.WriteLine("Je ondervraagt Jessica 'Jess' Taylor, een jonge onderzoekster die pas net bij het museum werkt.");
+            Console.WriteLine("Ze heeft het lichaam gevonden en is in shock.");
+        
+            Console.WriteLine("\nJessica: \"Ik... ik vond hem daar. Ik wist niet wat ik moest doen.\"");
+        
+            Console.WriteLine("\nBooth: \"Had je een relatie met het slachtoffer?\"");
+        
+            Console.WriteLine("\nJessica knikt langzaam.");
+            Console.WriteLine("Jessica: \"Ja, we waren samen. Maar ik zou hem nooit iets aandoen!\"");
+        
+            Console.WriteLine("\nBrennan: \"Wat deed je die avond in het museum?\"");
+        
+            Console.WriteLine("\nJessica: \"Ik was aan het werk aan een project. Ik hoorde een geluid en ging kijken. Toen vond ik hem.\"");
+        
+            Console.WriteLine("\nJe hebt genoeg gehoord. Jessica lijkt niet de moordenaar te zijn.");
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
+            Console.Clear();
+        }
+        private static void Scene3() {
+            List<string> personen = new List<string>
+            {
+                "Dr. Edward 'Eddie' Langford",
+                "Derek 'The Knife' Thompson",
+                "Professor James 'Prof' Smith",
+                "Jessica 'Jess' Taylor",
+                "Vraag Booth om hulp."
+            };
+        Console.Clear();
+
+        Console.WriteLine("Je belt het lab en krijgt te horen dat het mes geen vingerafdrukken bevatte, maar wel een vreemd symbool op het handvat. Hetzelfde symbool dat je op de draak-tatoeage hebt gezien.");
+        Console.WriteLine("Je kijkt vanuit het raam naar de verdachten en getuigen die je zojuist hebt ondervraagd. Wie is de moordenaar? En dan zie je het opeens...");
+        Console.ReadKey();
+        Console.Clear();
+        while(personen.Count > 0){
+            Console.Clear();
+            Console.WriteLine("Wie heeft het gedaan?");
+            for (int i = 0; i < personen.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {personen[i]}");
+            }
+            if(int.TryParse(Console.ReadLine(), out int keuze) && keuze > 0 && keuze <= personen.Count)
+            {
+                Console.Clear();
+                string gekozenPersoon = personen[keuze - 1];
+                Console.WriteLine($"\nJe hebt gekozen voor: {gekozenPersoon}");
+                if(gekozenPersoon == "Dr. Edward 'Eddie' Langford")
+                {
+                    Console.WriteLine("Booth zegt dat Edward niet de moordenaar is. Je kijkt naar de andere verdachten en getuigen.");
+                    personen.Remove(gekozenPersoon);
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
+                }
+                else if(gekozenPersoon == "Derek 'The Knife' Thompson")
+                {
+                    Console.WriteLine("Booth zegt dat Derek niet de moordenaar is. Je kijkt naar de andere verdachten en getuigen.");
+                    personen.Remove(gekozenPersoon);
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
+                }
+                else if(gekozenPersoon == "Professor James 'Prof' Smith")
+                {
+                    Console.WriteLine("Booth zegt dat de professor schulden had en een motief om een waardevol artefact te verkopen.");
+                    Console.WriteLine("Je kijkt naar hem en op zijn nek zie je een deel van het symbool dat je op het mes en de tatoeage hebt gezien.");
+                    Console.WriteLine("Hij is het, schreeuw je.");
+                    Console.WriteLine("Booth knikt en loopt naar de verhoorkamer om de professor te arresteren.");
+                    Console.WriteLine("Booth: \"Goed werk, Bones. We hebben de moordenaar.\"");
+                    Console.WriteLine("Je hebt de zaak opgelost. Gefeliciteerd!");
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
+                    Scene4();
+                    return;
+                }
+                else if(gekozenPersoon == "Jessica 'Jess' Taylor")
+                {
+                    Console.WriteLine("Booth zegt dat Jessica niet de moordenaar is. Je kijkt naar de andere verdachten en getuigen.");
+                    personen.Remove(gekozenPersoon);
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
+                }
+                else if(gekozenPersoon == "Vraag Booth om hulp.")
+                {
+                    Console.WriteLine("Je besluit Booth te vragen om hulp.");
+                    Console.WriteLine("Hij merkt op dat de professor schulden had en een motief om een waardevol artefact te verkopen.");
+                    Console.WriteLine("Je kijkt naar hem en op zijn nek zie je een deel van het symbool dat je op het mes en de tatoeage hebt gezien.");
+                    Console.WriteLine("Hij is het, schreeuw je.");
+                    Console.WriteLine("Booth knikt en loopt naar de verhoorkamer om de professor te arresteren.");
+
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
+                    Scene4(); // Scene 4: Feliciteren en einde
+                    return;
+                }
+                else
+                {
+                    Console.WriteLine("Ongeldige keuze, probeer opnieuw.");
+                    Console.ReadKey();
+                }
+            }
+        
+            else
+            {
+                Console.WriteLine("Ongeldige keuze, probeer opnieuw.");
+                Console.ReadKey();
+            }
+        }
+    }
+    
+    private static void Scene4() 
+    {
+        Console.Clear();
+        Console.WriteLine("Je hebt de zaak opgelost en de moordenaar gearresteerd. Gefeliciteerd!");
+        Console.WriteLine("Jij en Booth gaan samen naar de Bar: The Founding Fathers om te vieren.");
+        Console.WriteLine("Je bestelt een glas wijn en Booth bestelt een biertje.");
+        Console.WriteLine("Booth: \"Goed werk, Bones. Je hebt het weer voor elkaar gekregen.\"");
+        Console.WriteLine("Brennan: \"Je had gelijk over de weddenschap. Ik zal voor je een koffie betalen.\"");
+        Console.WriteLine("Booth: \"Wat dacht je van een biertje?\"");
+        Console.WriteLine("Jullie lachen samen");
+        Console.ReadKey();
+        Console.WriteLine("Press any key to continue...");
+
+        Console.Clear();
+        Console.WriteLine("Gefeliciteerd speler je hebt de moord opgelost! ");
+        Console.WriteLine("Dank je wel voor het spelen van mijn spel!");
+
+        Console.WriteLine("Het is bedacht en gemaakt door mij: Emre Kadir Tiren");
+        Console.WriteLine("Press any key to exit the game...");
+        Console.ReadKey();
+        Environment.Exit(0);
         return;
-
-
-    } 
+    }
         }
             }
-
