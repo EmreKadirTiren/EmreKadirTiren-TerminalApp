@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EmreKadirTiren-ConsoleApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c2430191380fe5144f660bfd6b3701d35d72bb06")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ff4c7d44694664bf05315ff7131ba09d63efa752")]
 [assembly: System.Reflection.AssemblyProductAttribute("EmreKadirTiren-ConsoleApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EmreKadirTiren-ConsoleApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

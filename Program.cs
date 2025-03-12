@@ -110,6 +110,7 @@ private void Scene1b() { // Plaats delict onderzoeken en aanwijzingen vinden
     Console.WriteLine("Booth, die het lichaam nu inspecteert, kijkt op naar je. \"Ja, dat heb ik ook al opgemerkt. Maar we moeten weten wie dit is.\"");
     Console.WriteLine("Met een geconcentreerde blik begint Booth het lichaam verder te onderzoeken, terwijl jij in stilte verder kijkt, je gedachten al samenvallend tot een logische conclusie.");
     Console.WriteLine("\"Er is geen enkele reden waarom een archeoloog hier zou worden achtergelaten, tussen de mummies,\" mumel je, maar Booth kijkt je aan en zegt: \"We hebben een moord, Brennan. Laten we de identiteit achterhalen.\"");
+    Console.WriteLine("De telefoon gaat af en na een kort gesprek hangt Booth op. Ik moet gaan Bones, maar als je klaar bent met je onderzoek bel me dan op. Dan kijken wat we verder kunnen doen.");
 
     Console.ReadKey();
 
@@ -119,8 +120,18 @@ private void Scene1b() { // Plaats delict onderzoeken en aanwijzingen vinden
         "Gebruik UV-licht om sporen van bloed of andere vloeistoffen te vinden.",
         "Bel het lab om vragen te stellen over iets dat je gevonden hebt.",
         "Bestuur de andere mummies misschien omdat het leuk is. Maar ook om te kijken of er iets verdachts is. Vooral omdat je een beetje afgeleid bent...",
-        "Praat met Booth"
+        "Praat met het Lab"
     };
+
+    string labpartner = "";
+                string labpartnerHijZij = "";
+                if (partnerchoice1 == "Dr. Camille 'Cam' Saroyan"){
+                 labpartner = "Dr. Zack Addy";
+                 labpartnerHijZij = "Hij";
+                }
+                else if (partnerchoice1 == "Dr. Zack Addy"){
+                 labpartner = "Dr. Camille 'Cam' Saroyan";
+                 labpartnerHijZij = "Zij";
 
 
 
@@ -162,7 +173,7 @@ private void Scene1b() { // Plaats delict onderzoeken en aanwijzingen vinden
                 gevondenClues.Add("Aanwijzing: Het slachtoffer heeft een tatoeage van een draak op zijn arm.");
                 Console.WriteLine("Je hebt een belangrijke aanwijzing gevonden: Het slachtoffer heeft een tatoeage van een draak op zijn arm.");
                 // Variabele om bij te houden of de clue gevonden is
-                Console.WriteLine("\nBrennan knielt bij het lichaam en begint direct te observeren, terwijl Booth met zijn gebruikelijke ongeduld toekijkt.");
+                Console.WriteLine("\nBrennan knielt bij het lichaam en begint direct te observeren, terwijl"+labpartner+" met zijn gebruikelijke ongeduld toekijkt.");
 
                 Console.WriteLine("\n\"Het slachtoffer draagt een net pak, maar er zitten lichte stofdeeltjes op. Dit wijst op contact met een vitrine of een oud voorwerp. Mogelijk een artefact.\"");
 
@@ -180,12 +191,12 @@ private void Scene1b() { // Plaats delict onderzoeken en aanwijzingen vinden
 
                 Console.WriteLine("\nBrennan rolt de mouw van het slachtoffer iets omhoog en merkt iets op.");
                 Console.WriteLine("\"Hmm... Interessant. Hier op de onderarm is een tatoeage van een draak. Gedetailleerd, niet recent. Mogelijk een symbool, een lidmaatschap...\"");
-                Console.WriteLine("\"Booth, dit zou nuttig kunnen zijn bij de ondervraging. Iemand kent deze draak misschien.\"");
+                Console.WriteLine("\","+ partner +" dit zou nuttig kunnen zijn bij de ondervraging. Iemand kent deze draak misschien.\"");
 
                 // Markeer de clue als gevonden
                 clueDraakArm = true;
 
-                Console.WriteLine("\nBooth zucht. \"Dus we hebben een vergiftiging, een gevecht of val, een ontbrekend horloge, en nu ook een mysterieuze draak-tatoeage. Wat wil je nu doen, Bones?\"");
+                Console.WriteLine("\n"+labpartner+" zucht. \"Dus we hebben een vergiftiging, een gevecht of val, een ontbrekend horloge, en nu ook een mysterieuze draak-tatoeage. Wat wil je nu doen, Bones?\"");
                 opties.Remove(gekozenOptie);
                 Console.WriteLine("Press any key to continue...");        
                 Console.ReadKey();
@@ -213,16 +224,7 @@ private void Scene1b() { // Plaats delict onderzoeken en aanwijzingen vinden
             }
     else if (bloedigMes && gekozenOptie == "Bel het lab om vragen te stellen over iets dat je gevonden hebt.")
             {   
-                string labpartner = "";
-                string labpartnerHijZij = "";
-                if (partnerchoice1 == "Dr. Camille 'Cam' Saroyan"){
-                 labpartner = "Dr. Zack Addy";
-                 labpartnerHijZij = "Hij";
-                }
-                else if (partnerchoice1 == "Dr. Zack Addy"){
-                 labpartner = "Dr. Camille 'Cam' Saroyan";
-                 labpartnerHijZij = "Zij";
-                }
+                                
                 Console.WriteLine("Je pakt je telefoon en belt het lab.");
             Console.WriteLine(labpartner + " neemt op en je legt uit wat je hebt gevonden.");
             Console.WriteLine(labpartnerHijZij+" zegt dat ze het mes zal onderzoeken op vingerafdrukken en andere sporen zodra ze bij het lab aankomen.");
@@ -230,8 +232,8 @@ private void Scene1b() { // Plaats delict onderzoeken en aanwijzingen vinden
             opties.Remove(gekozenOptie);
             Console.WriteLine("Press any key to continue...");        
             Console.ReadKey();
-
-        }  
+            }
+          
 
     else if(vitrinePlek && gekozenOptie == "Kijk rond de vitrine om te zien waar de bloedsporen naartoe leiden.")
     {
@@ -249,29 +251,41 @@ private void Scene1b() { // Plaats delict onderzoeken en aanwijzingen vinden
 
     }
         
-    else if (gekozenOptie == "Praat met Booth"){
-        Console.WriteLine("Je belt Booth op en vraagt of hij al iets heeft gevonden.");
-        Console.WriteLine("Booth zegt dat hij de verdachtes heeft gevonden en wacht op jouw om samen in FBI HQ ze te ondervragen.");
-        Console.WriteLine("Je zegt dat je samen met " + partnerchoice1 +  "er aan komt en hangt op.");
+    else if (gekozenOptie == "Praat met het Lab"){
+        Console.Clear();
+        Console.WriteLine("Je belt het Lab en vraagt of ze delen van het bewijs al ontvangen hebben op en vraagt of hij al iets heeft gevonden.");
+        Console.WriteLine(labpartner + "schreeuwt van ver en zegt ik weet wie het is");
+        Console.WriteLine("Het slachtoffer had vroeger een gebroken pink en sleutelbeen gehad en recentelijk een beenbreuk. Er was maar 1 persoon in het museum die er werkte wie dat kon zijn: Dr. Jeremy Donaldson.");
+        Console.WriteLine("Press any key to continue...");
+        Console.ReadKey();
+        Console.Clear();
+        Console.WriteLine("Je belt Booth op en vertelt wie het slachtoffer was en dat hij in het museum werkte.");
+        Console.WriteLine("Je zegt tegen Booth dat hij al het personeel naar het bureau laten komen. En dan ondervragen we ze samen.");
+        Console.WriteLine("Je zegt dat je samen met " + partnerchoice1 +  "naar het FBI HQ komen en je hangt op.");
         Console.WriteLine("Press any key to continue...");
         Console.ReadKey();
         Scene2();
         return;
         // Environment.Exit(0);
     }
-        if (opties.Count == 1) // Alleen de optie "Praat met Booth" is over //Dus automatisch Booth bellen
+        if (opties.Count == 1) // Alleen de optie "Praat met het Lab" is over //Dus automatisch Booth bellen
     {
         Console.Clear();
-        Console.WriteLine("\nJe hebt alle onderzoeken gedaan. Tijd om Booth te bellen.");
-        Console.WriteLine("Je belt Booth op en vraagt of hij al iets heeft gevonden.");
-        Console.WriteLine("Booth zegt dat hij de verdachtes heeft gevonden en wacht op jouw om samen in FBI HQ ze te ondervragen.");
-        Console.WriteLine("Je zegt dat je samen met " + partnerchoice1 +  "er aan komt en hangt op.");
+        Console.WriteLine("Je belt het Lab en vraagt of ze delen van het bewijs al ontvangen hebben op en vraagt of hij al iets heeft gevonden.");
+        Console.WriteLine(labpartner + "schreeuwt van ver en zegt ik weet wie het is");
+        Console.WriteLine("Het slachtoffer had vroeger een gebroken pink en sleutelbeen gehad en recentelijk een beenbreuk. Er was maar 1 persoon in het museum die er werkte wie dat kon zijn: Dr. Jeremy Donaldson.");
+        Console.WriteLine("Press any key to continue...");
+        Console.ReadKey();
+        Console.Clear();
+        Console.WriteLine("Je belt Booth op en vertelt wie het slachtoffer was en dat hij in het museum werkte.");
+        Console.WriteLine("Je zegt tegen Booth dat hij al het personeel naar het bureau laten komen. En dan ondervragen we ze samen.");
+        Console.WriteLine("Je zegt dat je samen met " + partnerchoice1 +  "naar het FBI HQ komen en je hangt op.");
         Console.WriteLine("Press any key to continue...");
         Console.ReadKey();
         Scene2();
-        // Environment.Exit(0);
         return;
-    }  
+        }
+          
         if (vitrinePlek && !opties.Contains("Kijk rond de vitrine om te zien waar de bloedsporen naartoe leiden.")){
             opties.Add("Kijk rond de vitrine om te zien waar de bloedsporen naartoe leiden.");
         }
@@ -289,11 +303,12 @@ private void Scene1b() { // Plaats delict onderzoeken en aanwijzingen vinden
 
         
 
-    // Als de speler ALLE onderzoeken heeft voltooid, wordt Booth automatisch gebeld.
-    //laat dit niet zien als optie kiest met booth spreken want dat gaat automatisch door naar de volgende scene
+    // Als de speler ALLE onderzoeken heeft voltooid, wordt het lab automatisch gebeld.
+    //laat dit niet zien als optie kiest met het lab spreken want dat gaat automatisch door naar de volgende scene
  
     }
-}
+            }
+                }
 
     private static void Scene2()
     {
