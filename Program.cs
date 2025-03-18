@@ -289,7 +289,6 @@ private void Scene1c() {
           
         if (vitrinePlek && !opties.Contains("Look under the display case.")){
             opties.Add("Look under the display case.");
-            vitrinePlek = false;
         }
         }
 
@@ -445,7 +444,7 @@ private static void Prof() {
     Console.WriteLine("Booth: \"But only someone from the museum would have access to that knife. And you had a motive to kill the victim.\"");
     
     Console.WriteLine("\nThe professor sighs deeply and closes his eyes.");
-    Console.WriteLine("Prof: \"Okay, okay... I had debts. I wanted to sell the artifact to pay off my debts. But he caught me, and I... I grabbed the knife and...\"");
+    Console.WriteLine("Prof: \"Lawyer. I want a Lawyer!\"");
     
     Console.WriteLine("\nYou’ve heard enough. The professor could be the murderer.");
     Console.WriteLine("Press any key to continue...");
